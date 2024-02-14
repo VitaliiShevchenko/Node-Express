@@ -12,3 +12,4 @@ Simplest project with Node.js as backend and Express.js as frontend
 7. Type command `npm run start`
 8. In the console will be open server and will be take a link for web-app. Press `ctrl+click`
 9. That's all, you can to investigate the work)
+10. For stop the server use command in the terminal `Ctrl+C`
