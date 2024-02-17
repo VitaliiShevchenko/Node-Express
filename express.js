@@ -1,4 +1,7 @@
 const express = require('express')
+const userRouter = require('./routes/user.routes')
+const postRouter = require('./routes/post.routes')
+
 const fs = require('fs')
 const PORT = 3001
 const HOST = 'localhost'
@@ -8,6 +11,9 @@ const app = express()
 app.set('view engine', 'ejs') // pattern
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use('/api', userRouter)
+app.use('/api', postRouter)
 
 app.get('/', (req, res) => {
     // fs.createReadStream('./views/index.html').pipe(res)
@@ -28,7 +34,7 @@ app.get('/user/:username/:id', (req, res) => {
 
 app.post('/check-user', (req, res) => {
     let username = req.body.username
-    if(username == "")
+    if(username === "")
         return res.redirect('/')
     else
         return res.redirect('/user/' + username + "/234")
